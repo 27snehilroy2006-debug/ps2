@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediSathi - Complete</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== LOGIN - FROM BOTH VIDEOS 0-2s ========== -->
+<div id="loginPage" class="page active">
+  <div class="login-split">
+    <!-- Patient Login - Video 1 -->
+    <div class="login-card" id="patientCard">
+      <div class="logo">👥</div>
+      <h2>Welcome to MediSathi</h2>
+      <p>Your Health, Our Priority</p>
+      <input type="text" placeholder="Email / Phone / Username">
+      <input type="password" placeholder="Password">
+      <div class="remember"><label><input type="checkbox"> Remember Me</label><a>Forgot password?</a></div>
+      <button class="btn-green" onclick="enter('patient')">Login as Patient</button>
+      <p class="switch">OR<br>Don't have an account? <span onclick="toggleLogin()">Doctor Login</span></p>
+    </div>
+    <!-- Doctor Login - Video 2 -->
+    <div class="login-card dark hidden" id="doctorCard">
+      <div class="logo">🩺</div>
+      <h2>Doctor Login</h2>
+      <p>Patient specialty fees</p>
+      <input type="text" placeholder="Email / Doctor ID">
+      <input type="password" placeholder="Password">
+      <div class="remember"><label><input type="checkbox"> Remember Me</label><a>Forgot password?</a></div>
+      <button class="btn-black" onclick="enter('doctor')">Login as Doctor</button>
+      <p class="switch">OR<br>Patient? <span onclick="toggleLogin()">Login as Patient</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PATIENT DASHBOARD - FROM VIDEO 1 (2-5s) ========== -->
+<div id="patientDash" class="page">
+  <div class="sidebar"><h2>✚ MediSathi</h2><a class="active">Patient Dashboard</a><a>My Doctors</a><a>Appointments</a><button onclick="logout()">Logout</button></div>
+  <div class="main">
+    <div class="topbar"><input id="searchDoc" placeholder="Search Doctor..." onkeyup="searchDoctor()"><span>Meditosh Patient</span></div>
+    <h3>Available Doctors</h3>
+    <div id="appointmentNotification" class="notification hidden"></div>
+    <div id="doctorList"></div>
+  </div>
+</div>
+
+<!-- ========== DOCTOR DASHBOARD - FROM VIDEO 2 (3-8s) ========== -->
+<div id="doctorDash" class="page">
+  <div class="sidebar"><h2>✚ MediSathi</h2><p>Dr. Rohan Chakraborty</p><a class="active">Daily Schedule</a><a>Patient Queue</a><button onclick="logout()">Logout</button></div>
+  <div class="main">
+    <div class="stats"><div>Today 16/22</div><div>Total 550 km</div><div>Practice 75 Days</div></div>
+    <h3>Daily Schedule</h3>
+    <div class="dash-grid">
+      <table id="scheduleTable"></table>
+      <!-- Right Panel from Video 2 -->
+      <div class="right-panel">
+        <div class="panel-card"><h4>Prescription Options</h4><p>Patient Time</p><button onclick="openPres()">+ Add Prescription</button><button>View History</button></div>
+        <div class="panel-card"><h4>Patient Queue</h4><p>Active Rate <b>28.7</b></p><div class="graph">📈 28%</div></div>
+        <div class="panel-card"><h4>Patient Queue List</h4><p>Anxiety (24%)</p><p>Memory Status</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ALL POPUPS FROM BOTH VIDEOS ========== -->
+<div id="bookSuccess" class="modal"><div class="box"><div class="tick">✓</div><p>Appointment booked successfully!</p><button class="btn-green" onclick="closeAll()">OK</button></div></div>
+<div id="cancelModal" class="modal"><div class="box"><p>Appointment Cancelled</p><button class="btn-green" onclick="closeAll()">OK</button></div></div>
+<div id="presModal" class="modal"><div class="box wide"><h3>Add Prescription <span onclick="closeAll()" style="float:right;cursor:pointer">X</span></h3><label>Medication name</label><input placeholder="e.g. Azithromycin"><div class="flex"><input placeholder="Dosage - 500mg"><input placeholder="Notes - After food"></div><label>Comment</label><textarea></textarea><button class="btn-green" onclick="savePres()">Add Prescription</button><button onclick="closeAll()">Cancel</button></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
